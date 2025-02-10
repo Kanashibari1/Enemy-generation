@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private Vector3 _moveDirection;
+    private Transform[] _wayPoints;
+    private int _currentWaypointIndex;
+    private int _speed = 5;
 
     private void Update()
     {
-        transform.Translate(_moveDirection * Time.deltaTime);
+        Transform targetWayPoints = _wayPoints[_currentWaypointIndex];
+        transform.LookAt(targetWayPoints.position);
+        transform.position = Vector3.MoveTowards(transform.position, targetWayPoints.position, _speed * Time.deltaTime);
     }
 
-    public void Direction(Vector3 position)
+    public void SetWaypoints(Transform[] wayPoints)
     {
-        _moveDirection = position;
+        _wayPoints = wayPoints;
+        _currentWaypointIndex = Random.Range(0, _wayPoints.Length);
     }
 }
