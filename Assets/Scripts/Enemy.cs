@@ -27,12 +27,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void GetPoints(Transform[] transform)
+    public void GetPoints(Transform[] wayPoints)
     {
-        _points = transform;
+        _points = wayPoints;
     }
 
-    public Transform GetNextPoint()
+    private Transform GetNextPoint()
     {
         _currentWaypointIndex++;
 
