@@ -1,21 +1,46 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Movement))]
 public class Enemy : MonoBehaviour
 {
-    private Transform[] _wayPoints;
-    private int _currentWaypointIndex;
-    private int _speed = 5;
+    private Transform[] _points;
+    private Movement _movement;
+    private int _currentWaypointIndex = 0;
+
+    private void Awake()
+    {
+        _movement = GetComponent<Movement>();
+    }
+
+    private void Start()
+    {
+        _movement.SetTarget(_points[_currentWaypointIndex]);
+    }
 
     private void Update()
     {
-        Transform targetWayPoints = _wayPoints[_currentWaypointIndex];
-        transform.LookAt(targetWayPoints.position);
-        transform.position = Vector3.MoveTowards(transform.position, targetWayPoints.position, _speed * Time.deltaTime);
+        _movement.MovementTowards();
+
+        if (!_movement.HasReachedTarget())
+        {
+            _movement.SetTarget(GetNextPoint());
+        }
     }
 
-    public void SetWaypoints(Transform[] wayPoints)
+    public void GetPoints(Transform[] transform)
     {
-        _wayPoints = wayPoints;
-        _currentWaypointIndex = Random.Range(0, _wayPoints.Length);
+        _points = transform;
+    }
+
+    public Transform GetNextPoint()
+    {
+        _currentWaypointIndex++;
+
+        if(_currentWaypointIndex >= _points.Length)
+        {
+            _currentWaypointIndex = 0;
+        }
+
+        return _points[_currentWaypointIndex];
     }
 }
