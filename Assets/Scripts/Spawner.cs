@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    private const float _delayTime = 2f;
+    private const float DelayTime = 2f;
 
-    [SerializeField] private Transform[] _wayPoints;
     [SerializeField] private Enemy _enemyPrefab;
+    [SerializeField] private Target _targetPrefab;
 
     private void Start()
     {
@@ -15,12 +15,12 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator Spawn()
     {
-        WaitForSeconds waitForSeconds = new(_delayTime);
+        WaitForSeconds waitForSeconds = new(DelayTime);
 
         while (enabled)
         {
             Enemy enemy = Instantiate(_enemyPrefab, transform.position, transform.rotation);
-            enemy.GetPoints(_wayPoints);
+            enemy.SetTarget(_targetPrefab.transform);
 
             yield return waitForSeconds;
         }

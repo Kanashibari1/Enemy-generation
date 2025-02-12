@@ -1,46 +1,25 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Movement))]
+[RequireComponent(typeof(Mover))]
 public class Enemy : MonoBehaviour
 {
-    private Transform[] _points;
-    private Movement _movement;
-    private int _currentWaypointIndex = 0;
+    private const float Speed = 2.5f;
+
+    private Mover _move;
+    private Transform _target;
 
     private void Awake()
     {
-        _movement = GetComponent<Movement>();
-    }
-
-    private void Start()
-    {
-        _movement.SetTarget(_points[_currentWaypointIndex]);
+        _move = GetComponent<Mover>();
     }
 
     private void Update()
     {
-        _movement.MovementTowards();
-
-        if (!_movement.HasReachedTarget())
-        {
-            _movement.SetTarget(GetNextPoint());
-        }
+        _move.MovementTowards(_target, Speed);
     }
 
-    public void GetPoints(Transform[] wayPoints)
+    public void SetTarget(Transform target)
     {
-        _points = wayPoints;
-    }
-
-    private Transform GetNextPoint()
-    {
-        _currentWaypointIndex++;
-
-        if(_currentWaypointIndex >= _points.Length)
-        {
-            _currentWaypointIndex = 0;
-        }
-
-        return _points[_currentWaypointIndex];
+        _target = target;
     }
 }
