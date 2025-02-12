@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Mover))]
 public class Target : MonoBehaviour
 {
-    [SerializeField] private int Speed = 5;
+    [SerializeField] private int _speed = 5;
 
     [SerializeField] private Transform[] _wayPoint;
 
@@ -17,18 +17,16 @@ public class Target : MonoBehaviour
 
     private void Update()
     {
-        _move.MovementTowards(_wayPoint[_currentWaypointIndex], Speed);
+        _move.MovementTowards(_wayPoint[_currentWaypointIndex], _speed);
 
-        if (!_move.HasReachedTarget(_wayPoint[_currentWaypointIndex]))
+        if (_move.HasReachedTarget(_wayPoint[_currentWaypointIndex]) == false)
         {
             GetNextPoint();
         }
     }
 
-    private Transform GetNextPoint()
+    private void GetNextPoint()
     {
         _currentWaypointIndex = ++_currentWaypointIndex % _wayPoint.Length;
-
-        return _wayPoint[_currentWaypointIndex];
     }
 }

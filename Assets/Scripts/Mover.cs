@@ -12,9 +12,6 @@ public class Mover : MonoBehaviour
 
     public bool HasReachedTarget(Transform position)
     {
-        Vector3 distance = position.position - transform.position;
-        float rootNumber = distance.sqrMagnitude;
-
-        return rootNumber > Threshold;
+        return (position.position - transform.position).sqrMagnitude > Threshold * Threshold;
     }
 }
