@@ -4,10 +4,12 @@ public class Mover : MonoBehaviour
 {
     private const float Threshold = 0.1f;
 
-    public void MovementTowards(Transform position, float speed)
+    [SerializeField] private float _speed;
+
+    public void MoveTowardsPosition(Transform position)
     {
         transform.LookAt(position.position);
-        transform.position = Vector3.MoveTowards(transform.position, position.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, position.position, _speed * Time.deltaTime);
     }
 
     public bool HasReachedTarget(Transform position)

@@ -3,8 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(Mover))]
 public class Target : MonoBehaviour
 {
-    [SerializeField] private int _speed = 5;
-
     [SerializeField] private Transform[] _wayPoint;
 
     private Mover _move;
@@ -17,15 +15,15 @@ public class Target : MonoBehaviour
 
     private void Update()
     {
-        _move.MovementTowards(_wayPoint[_currentWaypointIndex], _speed);
+        _move.MoveTowardsPosition(_wayPoint[_currentWaypointIndex]);
 
         if (_move.HasReachedTarget(_wayPoint[_currentWaypointIndex]) == false)
         {
-            GetNextPoint();
+            ChooseNextPoint();
         }
     }
 
-    private void GetNextPoint()
+    private void ChooseNextPoint()
     {
         _currentWaypointIndex = ++_currentWaypointIndex % _wayPoint.Length;
     }
