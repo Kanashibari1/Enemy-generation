@@ -263,7 +263,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3300e21a24168f24382bf4670138f5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
   _wayPoint:
   - {fileID: 280130177}
   - {fileID: 2063708706}
@@ -282,6 +281,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7918742869157935743, guid: 233cbdaa596ca1946887809ea9da4336, type: 3}
+      propertyPath: _speed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8423476013144898474, guid: 233cbdaa596ca1946887809ea9da4336, type: 3}
       propertyPath: m_Name
       value: FemaleCharacterPBR Variant (1)
@@ -397,7 +400,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 127
   m_IsActive: 1
 --- !u!154 &609953971
 TerrainCollider:
@@ -724,7 +727,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3300e21a24168f24382bf4670138f5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
   _wayPoint:
   - {fileID: 280130177}
   - {fileID: 2063708706}
@@ -743,6 +745,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7918742869157935743, guid: 233cbdaa596ca1946887809ea9da4336, type: 3}
+      propertyPath: _speed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8423476013144898474, guid: 233cbdaa596ca1946887809ea9da4336, type: 3}
       propertyPath: m_Name
       value: FemaleCharacterPBR Variant (2)
@@ -927,6 +933,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7918742869157935743, guid: 233cbdaa596ca1946887809ea9da4336, type: 3}
+      propertyPath: _speed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8423476013144898474, guid: 233cbdaa596ca1946887809ea9da4336, type: 3}
       propertyPath: m_Name
       value: FemaleCharacterPBR Variant
@@ -997,7 +1007,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3300e21a24168f24382bf4670138f5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
   _wayPoint:
   - {fileID: 280130177}
   - {fileID: 2063708706}
